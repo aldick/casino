@@ -1,4 +1,16 @@
-# It is documentation for using OquEasy API
+# Casino API
+
+## Using
+
+```bash
+cd backend;
+source venv/bin/activate;
+python backend/manage.py runserver
+```
+
+Backend will work on localhost on 8000 port.
+
+# Documentation
 
 ## Register
 
