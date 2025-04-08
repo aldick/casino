@@ -4,7 +4,8 @@
 
 ```bash
 cd backend;
-source venv/bin/activate;
+python -m venv venv;
+pip install -r requirements.txt;
 python backend/manage.py runserver
 ```
 
