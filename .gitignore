@@ -1,0 +1,8 @@
+venv/
+.env
+
+__pycache__/
+
+test.rest
+
+/backend/src/db.sqlite3
