@@ -25,3 +25,11 @@ class CustomUserSerializer(UserSerializer):
                 "email": "A user with this email already exists."
             })
         return value
+    
+class DepositSerializer(serializers.Serializer):
+    deposit = serializers.DecimalField(decimal_places=2, max_digits=10)
+    
+    def validate_deposit(self, deposit):
+        if deposit <= 0:
+            raise serializers.ValidationError("A deposit must be more than 0")
+        return deposit

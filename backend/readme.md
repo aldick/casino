@@ -40,6 +40,7 @@ This project uses **Djoser** for user authentication and **Token Authentication*
 - `/auth/token/login/` - Obtain authentication token
 - `/auth/token/logout/` - Invalidate token
 - `/auth/users/me/` - View/update authenticated user profile
+- `/auth/users/deposit/` - Replenishment of the balance of uthenticated user profile
 
 ## Token Authentication
 To access protected API endpoints, include the token in the request header:
@@ -120,6 +121,39 @@ GET http://localhost:8000/auth/users/me/
   }
 }
 ```
+
+## Example: Deposit
+```json
+GET http://localhost:8000/auth/user/deposit
+
+or 
+
+POST http://localhost:8000/auth/users/deposit/
+Content-Type: application/json
+
+{
+	"deposit": "100"
+}
+```
+
+### Possible responses
+- GET method:
+  ```json
+  {
+    "balance": // current balance
+  }
+  ```
+- POST method:
+  - Success:
+    ```json
+    {
+      "balance": // current balance
+      "deposit": // number 
+    }
+    ```
+  - Errors:
+    - `"deposit"`: "A deposit must be more than 0"
+
 
 ## Game Modes
 It is a template for other games. Other games can include not only `"bet"` field and include  additional fields in the request.
