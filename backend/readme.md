@@ -150,6 +150,27 @@ Content-Type: application/json
   }
   ```
 
+## Game history
+There is an endpoint in order to get history of the last 20 games of the user:
+```json
+GET http://localhost:8000/<game-name>/
+```
+
+### Possible responses
+
+```json
+{
+  ...
+  "game_id": {
+    "bet": // number
+    "is_win": // true or false
+    "payout": // number
+    "result": // result of the game
+  },
+  ...
+}
+```
+
 ## Example: Coin Flip
 ```json
 POST http://localhost:8000/coin-flip/

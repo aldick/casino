@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CoinflipConfig(AppConfig):
+class GameConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "coinflip"
+    name = "game"

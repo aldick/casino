@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     "djoser",
     
     "account",
+    "game",
 ]
 
 MIDDLEWARE = [

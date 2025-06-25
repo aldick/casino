@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from account.models import Profile
+from .models import Game
 from .serializers import BetSerializer
 
 
@@ -17,6 +18,23 @@ class GameView(APIView):
         Must be implemented in child classes.
         """
         raise NotImplementedError("Subclasses must implement play_game()")
+    
+    def get(self, request):
+        """
+        Returns last 20 games played by user
+        """
+        games = Game.objects.filter(user=request.user,
+                                    name=self.__class__.__name__[:-4])[:20]
+        print(self.__class__.__name__[:-4], request.user)
+        response = dict()
+        for game in games:
+            response[game.id] = {
+                "bet": game.bet,
+                "is_win": game.is_win,
+                "payout": game.payout,
+                "result":  game.result
+            }
+        return Response(response)
 
     def post(self, request):
         user = request.user  
@@ -34,6 +52,15 @@ class GameView(APIView):
             game = self.play_game(bet, serializer.validated_data)
             payout = game["payout"]
             result = game["result"]
+            
+            game = Game.objects.create(
+                name = f"{self.__class__.__name__}"[:-4],
+                user = request.user,
+                bet = bet,
+                payout = payout,
+                result = result
+            )
+            game.save()
             
             user.profile.balance -= bet
             user.profile.balance += payout
