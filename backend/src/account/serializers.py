@@ -18,6 +18,7 @@ class CustomUserSerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         model = User
         fields = ['id', 'email', 'username', 'profile']
+        read_only_fields = ['profile']
         
     def validate_email(self, value):
         if User.objects.filter(email__iexact=value).exists():
@@ -25,6 +26,21 @@ class CustomUserSerializer(UserSerializer):
                 "email": "A user with this email already exists."
             })
         return value
+    
+    def validate_username(self, value):
+        if len(value) < 3:  # Example: Enforce minimum length
+            raise serializers.ValidationError({
+                "username": "Username must be at least 3 characters long."
+            })
+        if User.objects.filter(username__iexact=value).exists():
+            raise serializers.ValidationError({
+                "username": "A user with this username already exists."
+            })
+        return value
+    
+    def create(self, validated_data):
+        print("Creating user with data:", validated_data)
+        return super().create(validated_data)
     
 class DepositSerializer(serializers.Serializer):
     deposit = serializers.DecimalField(decimal_places=2, max_digits=10)
