@@ -17,7 +17,10 @@ class CustomUserSerializer(UserSerializer):
     
     class Meta(UserSerializer.Meta):
         model = User
-        fields = ['id', 'email', 'username', 'profile']
+        fields = ['id', 'email', 'username', 'password', 'profile']
+        extra_kwargs = {
+            'password': {'write_only': True}  # Password is write-only
+        }
         read_only_fields = ['profile']
         
     def validate_email(self, value):
@@ -39,8 +42,10 @@ class CustomUserSerializer(UserSerializer):
         return value
     
     def create(self, validated_data):
-        print("Creating user with data:", validated_data)
-        return super().create(validated_data)
+        user = super().create(validated_data)
+        user.set_password(validated_data["password"])
+        user.save()
+        return user
     
 class DepositSerializer(serializers.Serializer):
     deposit = serializers.DecimalField(decimal_places=2, max_digits=10)
