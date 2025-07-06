@@ -254,3 +254,56 @@ Content-Type: application/json
     "bet_value": "red"
   }
   ```
+
+
+## Example: Plinko
+
+### POST Request
+
+```
+POST http://localhost:8000/plinko/
+Content-Type: application/json
+
+{
+  "bet": 2000.00,
+  "lines": 10 // must be an integer between 8 and 16
+}
+```
+
+### GET Request
+This endpoint returns the multipliers for each bottom field 
+
+```
+GET http://localhost:8000/plinko/?lines=10
+```
+
+### Possible Responses (GET)
+
+- **Errors**:
+  - `"lines"`: "Lines must be between 8 and 16"
+  - `"lines"`: "Lines must be a valid integer"
+- **Success**:
+
+  ```json
+  {
+  "bottom_fields": [8.9, 3.2, 1.4, 0.8, 0.6, 0.5, 0.6, 0.8, 1.4, 3.2, 8.9]
+  }
+  ```
+
+### Possible Responses (POST)
+This endpoint returns result as a list of turns of the ball for each line where -1 is a left and 1 is a right
+
+- **Errors**:
+  - `"lines"`: "Lines must be between 8 and 16"
+  - `"lines"`: "Lines must be a valid integer"
+- **Success**:
+
+  ```json
+  {
+    "bet": 2000.00,
+    "is_win": true, // true or false
+    "payout": 2400.00,
+    "result": [-1, 1, -1, 1, -1, 1, -1, 1, -1, 1], // list of -1 (left) or 1 (right) for each line
+    "lines": 10
+  }
+  ```
