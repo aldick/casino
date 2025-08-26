@@ -166,6 +166,7 @@ GET http://localhost:8000/<game-name>/
     "is_win": // true or false
     "payout": // number
     "result": // result of the game
+    "balance": // current balance of the user after the game
   },
   ...
 }
@@ -193,6 +194,7 @@ Content-Type: application/json
     "is_win": // true or false,
     "payout": 0.0,
     "result": // "heads" or "tails"
+    "balance": // current balance of the user after the game
     "choice": // "heads" or "tails"
   }
   ```
@@ -218,6 +220,7 @@ Content-Type: application/json
     "is_win": // true or false
     "payout": // number
     "result": // number between 0.01 and 10,
+    "balance": // current balance of the user after the game
     "stop_value": 2.50
   }
   ```
@@ -250,6 +253,7 @@ Content-Type: application/json
     "is_win": // true or false
     "payout": // number
     "result": // random integer between 0 and 36
+    "balance": // current balance of the user after the game
     "bet_type": "color",
     "bet_value": "red"
   }
@@ -304,6 +308,7 @@ This endpoint returns result as a list of turns of the ball for each line where 
     "is_win": true, // true or false
     "payout": 2400.00,
     "result": [-1, 1, -1, 1, -1, 1, -1, 1, -1, 1], // list of -1 (left) or 1 (right) for each line
+    "balance": // current balance of the user after the game
     "lines": 10
   }
   ```

@@ -1,0 +1,29 @@
+POST http://127.0.0.1:8000/auth/token/login/
+Content-Type: application/json
+
+{
+  "username": "aldick",
+  "password": "aldick"
+}
+
+###
+GET http://localhost:8000/auth/user/deposit
+
+###
+POST http://localhost:8000/auth/users/deposit/
+Authorization: Token cf3346cafc48e8046d3563a3879252be12861822
+Content-Type: application/json
+
+{
+	"deposit": "100"
+}
+
+###
+POST http://localhost:8000/coin-flip/
+Authorization: Token cf3346cafc48e8046d3563a3879252be12861822
+Content-Type: application/json
+
+{
+  "bet": 10,
+  "choice": "heads"
+}

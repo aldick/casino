@@ -3,6 +3,4 @@ venv/
 
 __pycache__/
 
-test.rest
-
 /backend/src/db.sqlite3

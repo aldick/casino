@@ -71,7 +71,8 @@ class GameView(APIView):
                     **serializer.data,
                     "is_win": True if payout > 0 else False,
                     "payout": payout,
-                    "result": result
+                    "result": result,
+                    "balance": user.profile.balance
                 },
                 status=status.HTTP_200_OK
             )
