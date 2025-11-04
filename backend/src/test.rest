@@ -1,4 +1,4 @@
-POST http://127.0.0.1:8000/auth/token/login/
+POST http://127.0.0.1:8000/auth/jwt/login/
 Content-Type: application/json
 
 {
@@ -7,7 +7,16 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8000/auth/user/deposit
+POST http://127.0.0.1:8000/auth/jwt/refresh/
+Cookie: refresh=eyJbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2MjMzNjE1MiwiaWF0IjoxNzYyMjQ5NzUyLCJqdGkiOiIwZjJmM2IxNmJjYTg0YWU4YjUzMTE5YjhjZDRhMzEwNCIsInVzZXJfaWQiOjF9.q8sTpbO3cL9OlaJbeAmb2VyeqAop0R3uGCZ6iwnyhAw
+
+### 
+POST http://127.0.0.1:8000/auth/logout/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjQ4ODc3LCJpYXQiOjE3NjIyNDg1NzcsImp0aSI6IjA5M2Q1MGVkMmJlNTRlZGI4MDRlMWYyNTIzNTZmN2YwIiwidXNlcl9pZCI6MX0.cqlYDUZ1phbjj0R_rUPby6HAHEFgdEtHldRVUAcP9_I
+
+###
+GET http://localhost:8000/auth/deposit/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjQ0ODI1LCJpYXQiOjE3NjIyNDQ1MjUsImp0aSI6IjIxZWJiYTBmMGY0MzQ5NzQ4ZGNhZTk2MzlmMjFkM2RhIiwidXNlcl9pZCI6MX0.trbIYFOJiFmu-RlnRlgweWFhthyGbosI_KXwRS7JSHw
 
 ###
 POST http://localhost:8000/auth/users/deposit/
@@ -19,8 +28,22 @@ Content-Type: application/json
 }
 
 ###
+POST http://127.0.0.1:8000/auth/users/
+Content-Type: application/json
+
+{
+	"username": "galmtigr",
+	"email": "galm@sigma.tv",
+	"password": "galm1234"
+}
+
+###
+GET http://localhost:8000/auth/users/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjUwMTM2LCJpYXQiOjE3NjIyNDk4MzYsImp0aSI6ImRlNDc0YzI3YTU5NDQ1YWViYzk2YzE5MTI1NmVkNmExIiwidXNlcl9pZCI6MX0.gz7e2EzKR5sG_BYNtWIs0jqVsI4HAqw135ZrwnH7Ta0
+
+###
 POST http://localhost:8000/coin-flip/
-Authorization: Token cf3346cafc48e8046d3563a3879252be12861822
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjQ0MzAwLCJpYXQiOjE3NjIyNDQwMDAsImp0aSI6ImI0NGY0MWQwMWIwZTQwNmQ4MTMxYmQzYTA0OGQ4YzBlIiwidXNlcl9pZCI6MX0.nKcKoby-l9IzFH8R4Um4JiK0LD1LpgtVXwV1RPCtS6c
 Content-Type: application/json
 
 {

@@ -52,8 +52,9 @@ Content-Type: application/json
 
 ## Example: Login
 ```json
-POST http://127.0.0.1:8000/auth/token/login/
+POST http://127.0.0.1:8000/auth/jwt/login/
 Content-Type: application/json
+
 {
   "username": "testuser",
   "password": "Testpassword123!"
@@ -62,13 +63,40 @@ Content-Type: application/json
 
 ### Possible Responses:
 - **Errors:**
-  - `"non_field_errors"`: "Unable to log in with provided credentials."
+  - `"detail"`: "No active account found with the given credentials"
 - **Success:**
-  - `"auth_token"`: ```<token>```
+  - `sets refresh token in cookies`
+  - `"refresh"`: ```<token>```
+  - `"access"`: ```<token>```
+
+## Example: Refresh
+```json
+POST http://127.0.0.1:8000/auth/jwt/refresh/
+Cookie: refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2MjMyNjg3MywiaWF0IjoxNzYyMjQwNDczLCJqdGkiOiI1ZjJiMzBiZTMwNTA0MjY0OTU4ODY5ZmY5ZjYwODg2OCIsInVzZXJfaWQiOjF9.i109kBPAqnzUkrV4UW29jv1Xkmpyr5RPkj2AfhnKKck
+```
+
+### Possible Responses:
+- **Errors:**
+  ```json
+  {
+  "detail": "Token is blacklisted",
+  "code": "token_not_valid"
+  }
+  ```
+  ```json
+  {
+  "detail": "Token is invalid",
+  "code": "token_not_valid"
+  }
+  ``` 
+- **Success:**
+  - `sets refresh token in cookies`
+  - `"refresh"`: ```<token>```
+  - `"access"`: ```<token>```
 
 ## Example: Logout
 ```
-POST http://127.0.0.1:8000/auth/token/logout/
+POST http://127.0.0.1:8000/auth/logout/
 ```
 
 ## Example: User information
