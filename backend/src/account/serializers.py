@@ -2,26 +2,18 @@ from rest_framework import serializers
 from djoser.serializers import UserSerializer
 from django.contrib.auth import get_user_model
 
-from .models import Profile
-
+from .models import User
 
 User = get_user_model()
-
-class ProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        fields = ['balance']
         
-class CustomUserSerializer(UserSerializer):
-    profile = ProfileSerializer(read_only=True)
-    
+        
+class UserSerializer(UserSerializer):
     class Meta(UserSerializer.Meta):
         model = User
-        fields = ['id', 'email', 'username', 'password', 'profile']
+        fields = ['id', 'email', 'username', 'password', 'balance']
         extra_kwargs = {
             'password': {'write_only': True}  # Password is write-only
         }
-        read_only_fields = ['profile']
         
     def validate_email(self, value):
         if User.objects.filter(email__iexact=value).exists():

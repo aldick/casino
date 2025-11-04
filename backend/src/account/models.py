@@ -1,14 +1,9 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(
-		settings.AUTH_USER_MODEL,
-		on_delete=models.CASCADE,
-		related_name='profile'
-	)
-    
+class User(AbstractUser):
     balance = models.DecimalField(
         max_digits=20,
         decimal_places=2,
@@ -16,5 +11,5 @@ class Profile(models.Model):
     )
     
     def __str__(self):
-        return f"{self.user.username}: ${self.balance}"
+        return f"{self.username}: ${self.balance}"
     

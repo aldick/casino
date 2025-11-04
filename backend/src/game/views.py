@@ -4,7 +4,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from account.models import Profile
 from .models import Game
 from .serializers import BetSerializer
 
@@ -42,7 +41,7 @@ class GameView(APIView):
         serializer = self.serializer_class(
             data=request.data,
             context={
-                "balance": user.profile.balance,
+                "balance": user.balance,
             }
         )
         
@@ -62,9 +61,9 @@ class GameView(APIView):
             )
             game.save()
             
-            user.profile.balance -= bet
-            user.profile.balance += payout
-            user.profile.save()
+            user.balance -= bet
+            user.balance += payout
+            user.save()
             
             return Response(
                 {
@@ -72,7 +71,7 @@ class GameView(APIView):
                     "is_win": True if payout > 0 else False,
                     "payout": payout,
                     "result": result,
-                    "balance": user.profile.balance
+                    "balance": user.balance
                 },
                 status=status.HTTP_200_OK
             )

@@ -15,15 +15,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 
 ###
 GET http://localhost:8000/auth/deposit/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjQ0ODI1LCJpYXQiOjE3NjIyNDQ1MjUsImp0aSI6IjIxZWJiYTBmMGY0MzQ5NzQ4ZGNhZTk2MzlmMjFkM2RhIiwidXNlcl9pZCI6MX0.trbIYFOJiFmu-RlnRlgweWFhthyGbosI_KXwRS7JSHw
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjg2NDgwLCJpYXQiOjE3NjIyODYxODAsImp0aSI6ImJiMWEwOTllNTlmZTQ0MmY4ZDhjYzFjYTU0MmVkOWMxIiwidXNlcl9pZCI6MX0.05HjD7_Vbi6DvNn4xGmjn0-U33gqSJq6LLrKgZllmiE
 ###
-POST http://localhost:8000/auth/users/deposit/
-Authorization: Token cf3346cafc48e8046d3563a3879252be12861822
+POST http://localhost:8000/auth/deposit/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjg2ODQ0LCJpYXQiOjE3NjIyODY1NDQsImp0aSI6ImYwZTFlYTdmMTBmZjQwZDhiZWU5ZjhhMTNkNzJmMDM5IiwidXNlcl9pZCI6MX0.D-o5TivQYzcGMimm4VpOcaHVBAAGQK6VO-GSSKj-ZkM
 Content-Type: application/json
 
 {
-	"deposit": "100"
+	"deposit": "1000"
 }
 
 ###
@@ -31,14 +30,14 @@ POST http://127.0.0.1:8000/auth/users/
 Content-Type: application/json
 
 {
-	"username": "galsamtigr223",
-	"email": "gal2m3sad2@sigma.tv",
-	"password": "g"
+	"username": "aldick",
+	"email": "aldick@sigma.tv",
+	"password": "aldick"
 }
 
 ###
 GET http://localhost:8000/auth/users/me/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjUwMTM2LCJpYXQiOjE3NjIyNDk4MzYsImp0aSI6ImRlNDc0YzI3YTU5NDQ1YWViYzk2YzE5MTI1NmVkNmExIiwidXNlcl9pZCI6MX0.gz7e2EzKR5sG_BYNtWIs0jqVsI4HAqw135ZrwnH7Ta0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjg2NDgwLCJpYXQiOjE3NjIyODYxODAsImp0aSI6ImJiMWEwOTllNTlmZTQ0MmY4ZDhjYzFjYTU0MmVkOWMxIiwidXNlcl9pZCI6MX0.05HjD7_Vbi6DvNn4xGmjn0-U33gqSJq6LLrKgZllmiE
 
 ###
 POST http://localhost:8000/coin-flip/
@@ -52,7 +51,7 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8000/roulette/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjc5NTc5LCJpYXQiOjE3NjIyNzkyNzksImp0aSI6Ijc5M2E0NWQ3MDdmODRiZDdiYTNmODRlZjE0OWQ5ODEyIiwidXNlcl9pZCI6MX0.p_ZLab_oHQs8FdW4h2Srq52Sh7SjVVdLcTBm2s782mE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjg2ODQ0LCJpYXQiOjE3NjIyODY1NDQsImp0aSI6ImYwZTFlYTdmMTBmZjQwZDhiZWU5ZjhhMTNkNzJmMDM5IiwidXNlcl9pZCI6MX0.D-o5TivQYzcGMimm4VpOcaHVBAAGQK6VO-GSSKj-ZkM
 Content-Type: application/json
 
 [

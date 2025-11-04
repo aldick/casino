@@ -67,13 +67,13 @@ class RouletteView(GameView):
         serializer = self.serializer_class(
             data=data,
             many=many,
-            context={"balance": user.profile.balance}
+            context={"balance": user.balance}
         )
         
         if serializer.is_valid():
             bets = serializer.data
             total_bet = sum((Decimal(str(b["bet"])) for b in bets), Decimal("0"))
-            if user.profile.balance < total_bet:
+            if user.balance < total_bet:
                 return Response(
                     {"balance": "Insufficient balance for all bets"},
                     status=status.HTTP_400_BAD_REQUEST
@@ -92,15 +92,15 @@ class RouletteView(GameView):
             )
             game.save()
             
-            user.profile.balance -= total_bet
-            user.profile.balance += total_payout
-            user.profile.save()
+            user.balance -= total_bet
+            user.balance += total_payout
+            user.save()
 
             return Response({
                 "result": result,
                 "total_bet": total_bet,
                 "total_payout": total_payout,
-                "balance": user.profile.balance,
+                "balance": user.balance,
                 "bets": game_result["details"]
             }, status=status.HTTP_200_OK)
 

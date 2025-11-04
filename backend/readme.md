@@ -6,18 +6,17 @@ This project uses **Djoser** for user authentication and **Token Authentication*
 - `/auth/token/login/` - Obtain authentication token
 - `/auth/token/logout/` - Invalidate token
 - `/auth/users/me/` - View/update authenticated user profile
-- `/auth/users/deposit/` - Replenishment of the balance of uthenticated user profile
-
+- `/auth/users/deposit/` - Replenishment of the balance of authenticated user
 ## Token Authentication
 To access protected API endpoints, include the token in the request header:
 ```
-Authorization: Token <your-token>
+Authorization: Bearer <your-token>
 ```
 
 ### Example request format for a protected endpoint:
 ```json
 GET http://127.0.0.1:8000/api/your-endpoint/
-Authorization: Token <your-token>
+Authorization: Bearer <your-token>
 ```
 
 ### Possible Responses:
@@ -72,7 +71,7 @@ Content-Type: application/json
 ## Example: Refresh
 ```json
 POST http://127.0.0.1:8000/auth/jwt/refresh/
-Cookie: refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2MjMyNjg3MywiaWF0IjoxNzYyMjQwNDczLCJqdGkiOiI1ZjJiMzBiZTMwNTA0MjY0OTU4ODY5ZmY5ZjYwODg2OCIsInVzZXJfaWQiOjF9.i109kBPAqnzUkrV4UW29jv1Xkmpyr5RPkj2AfhnKKck
+Cookie: refresh=<token>
 ```
 
 ### Possible Responses:
@@ -110,9 +109,7 @@ GET http://localhost:8000/auth/users/me/
   "id": 1,
   "email": "admin@admin.com",
   "username": "admin",
-  "profile": {
-    "balance": "26500.00"
-  }
+  "balance": "26500.00"
 }
 ```
 
@@ -175,6 +172,7 @@ Content-Type: application/json
     "is_win": // true or false
     "payout": // number
     "result": // result of the game
+    "balance": // current balance of the user after the game
   }
   ```
 

@@ -69,7 +69,7 @@ class DepositView(APIView):
     
     def get(self, request):
         return Response({
-            "balance": request.user.profile.balance
+            "balance": request.user.balance
         }, status=status.HTTP_200_OK)
     
     def post(self, request):
@@ -77,16 +77,16 @@ class DepositView(APIView):
         
         if serializer.is_valid():
             deposit = serializer.validated_data["deposit"]
-            profile = request.user.profile
+            user = request.user
                         
-            profile.balance += deposit
-            profile.save()
+            user.balance += deposit
+            user.save()
             
             return Response(
                 {
                     "balance": "Successful replenishment of the balance",
                     "deposit": deposit,
-                    "balance": profile.balance
+                    "balance": user.balance
                 },
                 status=status.HTTP_200_OK
             )

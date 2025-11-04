@@ -89,11 +89,13 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     'SERIALIZERS': {
-        'user': 'account.serializers.CustomUserSerializer',
-        'current_user': 'account.serializers.CustomUserSerializer',
-        'user_create': 'account.serializers.CustomUserSerializer',
+        'user': 'account.serializers.UserSerializer',
+        'current_user': 'account.serializers.UserSerializer',
+        'user_create': 'account.serializers.UserSerializer',
     },
 }
+
+AUTH_USER_MODEL = "account.User"
 
 CORS_ALLOW_ALL_ORIGINS = True
 
