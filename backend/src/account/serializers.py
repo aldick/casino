@@ -48,7 +48,7 @@ class CustomUserSerializer(UserSerializer):
         return user
     
 class DepositSerializer(serializers.Serializer):
-    deposit = serializers.DecimalField(decimal_places=2, max_digits=10)
+    deposit = serializers.DecimalField(decimal_places=2, max_digits=20)
     
     def validate_deposit(self, deposit):
         if deposit <= 0:

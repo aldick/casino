@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 
 class BetSerializer(serializers.Serializer):
-    bet = serializers.DecimalField(max_digits=10,
+    bet = serializers.DecimalField(max_digits=20,
                                    decimal_places=2)
     
     def validate_bet(self, bet):

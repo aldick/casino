@@ -10,11 +10,11 @@ class Profile(models.Model):
 	)
     
     balance = models.DecimalField(
-        max_digits=10,
+        max_digits=20,
         decimal_places=2,
         default=0.00,
     )
     
     def __str__(self):
-        return f"{self.user.username}: {self.balance} kzt"
+        return f"{self.user.username}: ${self.balance}"
     

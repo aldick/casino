@@ -9,7 +9,11 @@ class Game(models.Model):
 		on_delete=models.CASCADE,
 		related_name='games'
 	)
-    bet = models.PositiveIntegerField()
+    bet = models.DecimalField(
+        max_digits=20,
+        decimal_places=2,
+        default=0.00,
+    )
     payout = models.PositiveIntegerField()
     result = models.CharField(max_length=100)
     
