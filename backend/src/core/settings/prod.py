@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from .base import *
 
 SECRET_KEY = os.getenv("SECRET_KEY")
@@ -17,6 +18,8 @@ DATABASES = {
 }
 
 SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(weeks=2),
     "AUTH_COOKIE": "access",
     "AUTH_COOKIE_REFRESH": "refresh",
     "AUTH_COOKIE_SECURE": True,
