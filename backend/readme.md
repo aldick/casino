@@ -258,13 +258,12 @@ Content-Type: application/json
 POST http://localhost:8000/roulette/
 Content-Type: application/json
 
-{
-  "bet": 2000.00,
-  "bet_type": // "color", "even_odd", or "number"
-  "bet_value": // "red" or "black" for color;
-               // "even" or "odd" for even_odd; 
-               // 0-36 for number
-}
+[
+  {"bet": 100, "bet_type": "color", "bet_value": "red"},
+  {"bet": 50, "bet_type": "even_odd", "bet_value": "odd"},
+  {"bet": 25, "bet_type": "number", "bet_value": "17"},
+  ...
+]
 ```
 
 ### Possible Responses
@@ -277,13 +276,34 @@ Content-Type: application/json
 - **Success**:
   ```json
   {
-    "bet": 2000.00,
-    "is_win": // true or false
-    "payout": // number
-    "result": // random integer between 0 and 36
-    "balance": // current balance of the user after the game
-    "bet_type": "color",
-    "bet_value": "red"
+  "result": 23,
+  "total_bet": 175.0,
+  "total_payout": 300.0,
+  "balance": 33360.0,
+  "bets": [
+    {
+      "bet": "100.00",
+      "bet_type": "color",
+      "bet_value": "red",
+      "payout": "200.00",
+      "is_win": true
+    },
+    {
+      "bet": "50.00",
+      "bet_type": "even_odd",
+      "bet_value": "odd",
+      "payout": "100.00",
+      "is_win": true
+    },
+    {
+      "bet": "25.00",
+      "bet_type": "number",
+      "bet_value": "17",
+      "payout": "0",
+      "is_win": false
+    },
+    ...
+  ]
   }
   ```
 

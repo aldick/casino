@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from rest_framework import serializers
 
 
@@ -9,6 +11,7 @@ class BetSerializer(serializers.Serializer):
         """
         Check that bet is not negative
         """
+        bet = Decimal(bet)
         if bet < 0:
             raise serializers.ValidationError("Bet cannot be negative")
         return bet
@@ -17,8 +20,8 @@ class BetSerializer(serializers.Serializer):
         """
         Check that the balance is enough for the bet.
         """
-        balance = self.context.get("balance")
-        bet = data.get("bet")
+        balance = Decimal(self.context.get("balance"))
+        bet = Decimal(data.get("bet"))
 
         if balance < bet:
             raise serializers.ValidationError(

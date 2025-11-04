@@ -8,8 +8,7 @@ Content-Type: application/json
 
 ###
 POST http://127.0.0.1:8000/auth/jwt/refresh/
-Cookie: refresh=eyJbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2MjMzNjE1MiwiaWF0IjoxNzYyMjQ5NzUyLCJqdGkiOiIwZjJmM2IxNmJjYTg0YWU4YjUzMTE5YjhjZDRhMzEwNCIsInVzZXJfaWQiOjF9.q8sTpbO3cL9OlaJbeAmb2VyeqAop0R3uGCZ6iwnyhAw
-
+Cookie: refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2MjM2NTM1OSwiaWF0IjoxNzYyMjc4OTU5LCJqdGkiOiJiNWRmODQ5MGFmMmI0YTBiODA5OTYxNmQ2ZjNhZDBjYSIsInVzZXJfaWQiOjF9.Qrcgfi3vOGeOxYxl57Z2ifbiBFg2501gh_svyDajjGE
 ### 
 POST http://127.0.0.1:8000/auth/logout/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjQ4ODc3LCJpYXQiOjE3NjIyNDg1NzcsImp0aSI6IjA5M2Q1MGVkMmJlNTRlZGI4MDRlMWYyNTIzNTZmN2YwIiwidXNlcl9pZCI6MX0.cqlYDUZ1phbjj0R_rUPby6HAHEFgdEtHldRVUAcP9_I
@@ -32,9 +31,9 @@ POST http://127.0.0.1:8000/auth/users/
 Content-Type: application/json
 
 {
-	"username": "galmtigr",
-	"email": "galm@sigma.tv",
-	"password": "galm1234"
+	"username": "galsamtigr223",
+	"email": "gal2m3sad2@sigma.tv",
+	"password": "g"
 }
 
 ###
@@ -50,3 +49,14 @@ Content-Type: application/json
   "bet": 10,
   "choice": "heads"
 }
+
+###
+POST http://localhost:8000/roulette/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjc5NTc5LCJpYXQiOjE3NjIyNzkyNzksImp0aSI6Ijc5M2E0NWQ3MDdmODRiZDdiYTNmODRlZjE0OWQ5ODEyIiwidXNlcl9pZCI6MX0.p_ZLab_oHQs8FdW4h2Srq52Sh7SjVVdLcTBm2s782mE
+Content-Type: application/json
+
+[
+  {"bet": 100, "bet_type": "color", "bet_value": "red"},
+  {"bet": 50, "bet_type": "even_odd", "bet_value": "odd"},
+  {"bet": 25, "bet_type": "number", "bet_value": "17"}
+]
