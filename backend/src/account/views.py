@@ -6,6 +6,7 @@ from rest_framework import status
 from django.conf import settings
 
 from .serializers import DepositSerializer
+from .models import DepositHistory
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
@@ -75,7 +76,13 @@ class DepositView(APIView):
         if serializer.is_valid():
             deposit = serializer.validated_data["deposit"]
             user = request.user
-                        
+            
+            deposit_history = DepositHistory(
+                user=user,
+                value=deposit
+            )
+            deposit_history.save()
+            
             user.balance += deposit
             user.save()
             
