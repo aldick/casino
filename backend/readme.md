@@ -3,10 +3,11 @@ This project uses **Djoser** for user authentication and **Token Authentication*
 
 ### Available endpoints:
 - `/auth/users/` - Register a new user
-- `/auth/token/login/` - Obtain authentication token
-- `/auth/token/logout/` - Invalidate token
+- `/auth/jwt/login/` - Obtain authentication token
+- `/auth/jwt/refresh/` - Refresh jwt token
+- `/auth/logout/` - Invalidate token
 - `/auth/users/me/` - View/update authenticated user profile
-- `/auth/users/deposit/` - Replenishment of the balance of authenticated user
+- `/auth/deposit/` - Replenishment of the balance of authenticated user
 ## Token Authentication
 To access protected API endpoints, include the token in the request header:
 ```
@@ -138,16 +139,47 @@ Content-Type: application/json
   - Success:
     ```json
     {
-      "balance": // current balance
-      "deposit": // number 
+      "message": "Successful balance replenishment",
+      "deposit": 1000.0,
+      "promocode": null,
+      "bonus": 0.0,
+      "balance": 16220.0
     }
     ```
   - Errors:
     - `"deposit"`: "A deposit must be more than 0"
 
 
+
+## Example: Promocode:
+```json
+POST http://localhost:8000/auth/users/deposit/?promocode=PERCENT20
+Content-Type: application/json
+
+{
+	"deposit": "100"
+}
+```
+
+### Possible responses
+- Success:
+  ```json
+  {
+    "message": "Successful balance replenishment",
+    "deposit": 1000.0,
+    "promocode": "PERCENT20",
+    "bonus": 200.0,
+    "balance": 17420.0
+  }
+  ```
+- Errors:
+  - `"promocode"`: "Promocode is not exist"
+  - `"promocode"`: "You have already used this promocode."
+  - `"promocode"`: "Promocode is not active or expired"
+
+
 ## Game Modes
-It is a template for other games. Other games can include not only `"bet"` field and include  additional fields in the request.
+It is a template for other games. Other games can include not only `"bet"` field and include additional fields in the request.
 
 ## Example of the game
 ```json

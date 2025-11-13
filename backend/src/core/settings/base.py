@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     
     "account",
     "game",
+    "finance"
 ]
 
 MIDDLEWARE = [
@@ -92,9 +93,9 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     'SERIALIZERS': {
-        'user': 'account.serializers.UserSerializer',
-        'current_user': 'account.serializers.UserSerializer',
-        'user_create': 'account.serializers.UserSerializer',
+        'user': 'account.serializers.CustomUserSerializer',
+        'current_user': 'account.serializers.CustomUserSerializer',
+#        'user_create': 'account.serializers.CustomUserSerializer',
     },
 }
 

@@ -3,4 +3,4 @@ venv/
 
 __pycache__/
 
-/backend/src/db.sqlite3
+/backend/src/core/db.sqlite3

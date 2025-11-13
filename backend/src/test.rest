@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "username": "aldick",
-  "password": "aldick"
+  "password": "12052008Aa!"
 }
 
 ###
@@ -15,12 +15,12 @@ POST http://127.0.0.1:8000/auth/logout/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjQ4ODc3LCJpYXQiOjE3NjIyNDg1NzcsImp0aSI6IjA5M2Q1MGVkMmJlNTRlZGI4MDRlMWYyNTIzNTZmN2YwIiwidXNlcl9pZCI6MX0.cqlYDUZ1phbjj0R_rUPby6HAHEFgdEtHldRVUAcP9_I
 
 ###
-GET http://localhost:8000/auth/deposit/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjg5NTY2LCJpYXQiOjE3NjIyNzg5NTksImp0aSI6IjhjNzY5MGY0YzQwMjRlNDVhNDVmNjFkMTAwN2MyNjlmIiwidXNlcl9pZCI6MX0.ngidM4UmtbDr0ztbRknG1i2AX-wcgm0YuqCzLjL1zgs
+GET http://localhost:8000/deposit/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyNTk5NjI3LCJpYXQiOjE3NjI1OTg3MjcsImp0aSI6Ijc4NWNjMjViNDk2MDRmMTU4MzNlMGFmMGE0YmU3OGU4IiwidXNlcl9pZCI6MX0.rJEphKzcZrnNgImxfgSqR4TcYdlZlKnlL7WcWA6cBH8
 
 ###
-POST http://localhost:8000/auth/deposit/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjg2ODQ0LCJpYXQiOjE3NjIyODY1NDQsImp0aSI6ImYwZTFlYTdmMTBmZjQwZDhiZWU5ZjhhMTNkNzJmMDM5IiwidXNlcl9pZCI6MX0.D-o5TivQYzcGMimm4VpOcaHVBAAGQK6VO-GSSKj-ZkM
+POST http://localhost:8000/deposit/?promocode=PERCENT20
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzMDA4ODg2LCJpYXQiOjE3NjMwMDc5ODYsImp0aSI6IjQ5MDcyM2I2MGRhMTQ3ODU5NDY1YmE5NGE2MmJjNWRkIiwidXNlcl9pZCI6MX0.vfdcRyEugbBnODxr1_Yi7XUZiSmNUVYR2QFVMXZhMYg
 Content-Type: application/json
 
 {
@@ -34,12 +34,12 @@ Content-Type: application/json
 {
 	"username": "aldick",
 	"email": "aldick@sigma.tv",
-	"password": "aldick"
+	"password": "12052008Aa!"
 }
 
 ###
 GET http://localhost:8000/auth/users/me/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyMjg5NTY2LCJpYXQiOjE3NjIyNzg5NTksImp0aSI6IjhjNzY5MGY0YzQwMjRlNDVhNDVmNjFkMTAwN2MyNjlmIiwidXNlcl9pZCI6MX0.ngidM4UmtbDr0ztbRknG1i2AX-wcgm0YuqCzLjL1zgs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYyNTAzNTMwLCJpYXQiOjE3NjI1MDI2MzAsImp0aSI6Ijg4MTY3MWQ5NmNiZTRiOWJiMDVmNmUyNGI2YTUwMWZlIiwidXNlcl9pZCI6MX0.bRxbloCWGoPSK7l0_RVr7l-K_NNlLIkBvKUvXmkWYig
 
 ###
 POST http://localhost:8000/coin-flip/

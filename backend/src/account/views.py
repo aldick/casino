@@ -5,9 +5,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.conf import settings
 
-from .serializers import DepositSerializer
-from .models import DepositHistory
-
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
@@ -62,40 +59,3 @@ class LogoutView(APIView):
                             status=status.HTTP_200_OK)
         response.delete_cookie("refresh")
         return response
-    
-
-class DepositView(APIView):
-    def get(self, request):
-        return Response({
-            "balance": request.user.balance
-        }, status=status.HTTP_200_OK)
-    
-    def post(self, request):
-        serializer = DepositSerializer(data=request.data)
-        
-        if serializer.is_valid():
-            deposit = serializer.validated_data["deposit"]
-            user = request.user
-            
-            deposit_history = DepositHistory(
-                user=user,
-                value=deposit
-            )
-            deposit_history.save()
-            
-            user.balance += deposit
-            user.save()
-            
-            return Response(
-                {
-                    "balance": "Successful replenishment of the balance",
-                    "deposit": deposit,
-                    "balance": user.balance
-                },
-                status=status.HTTP_200_OK
-            )
-        
-        return Response(
-            serializer.errors,
-            status=status.HTTP_400_BAD_REQUEST
-        )

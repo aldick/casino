@@ -1,12 +1,8 @@
 from django.contrib import admin
 
-from .models import User, DepositHistory
+from .models import User
 
 
 @admin.register(User)
 class User(admin.ModelAdmin):
-    pass
-
-@admin.register(DepositHistory)
-class DepositHistory(admin.ModelAdmin):
     pass
